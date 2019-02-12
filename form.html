@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1671.1">
+  <script type="text/javascript" src="movements.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+
+<form name='frmDisplay' onsubmit="return Myaction();">
+<h1>G.S.S Old Spice Display</h1>
+<span> Distance </span><span><input type="text" name="txtDistance" /></span>
+</br>
+<br/>
+<span>Direction</span>
+<span><select name='direction'>
+<option value='0'>0</option>
+<option value='90'>90</option>
+<option value='180'>180</option>
+<option value='270'>270</option>
+</select></span>
+</br>
+</br>
+<span>Map Size</span><span><input type='text' name='txtMapSize' id= 'txtMapSize' value = "128"></span>
+<input type='submit' value='submit'>
+<br/><br/>
+
+
+<hr style="border-width: 5pt" />
+<span>Current Location</span> <span><input type="text" name='txtCLocation' id='txtCLocation' value='0,0'></span>
+</form>
+<script>
+
+function Myaction(){
+    var coord = frmDisplay.txtCLocation.value.split(",");
+    var x = parseInt(coord[0]);
+    var y = parseInt(coord[1]);
+    var distance = parseInt(frmDisplay.txtDistance.value);
+    var direction = parseInt(frmDisplay.direction.value);
+    var mapSize = parseInt(frmDisplay.txtMapSize.value);
+    var newCoordinate = Mymove(distance,direction,mapSize,x,y);
+
+    document.getElementById("txtCLocation").value = newCoordinate[0]+','+newCoordinate[1];
+
+    return false;
+}
+
+</script>
+</body>
+</html>
